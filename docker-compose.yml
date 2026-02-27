@@ -1,0 +1,13 @@
+services:
+  shipstation-auto:
+    build: .
+    container_name: shipstation-auto
+    restart: unless-stopped
+    environment:
+      - TZ=America/New_York  # Change to your timezone
+    volumes:
+      # Persist logs and screenshots outside the container
+      - ./logs:/app/logs
+      - ./screenshots:/app/screenshots
+    # Uncomment to run manually instead of waiting for cron:
+    # command: python main.py --dry-run
